@@ -3504,7 +3504,7 @@
       "Partner",
       "SalesOrder"
     ],
-    "LastModifiedTimestamp": "638060863642202790",
+    "LastModifiedTimestamp": "638060883603255161",
     "Name": "ProductBox",
     "Rules": [
       {
@@ -3612,7 +3612,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638060863642202790",
+  "LastModifiedTimestamp": "638060883603255161",
   "Name": "ded4bc5e4cd54f4685e3629eb2bd3877",
   "OverridableProperties": {},
   "Version": "637201384767043000"
