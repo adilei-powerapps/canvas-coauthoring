@@ -1,0 +1,43 @@
+{
+  "0ee7ec86-5a55-41dc-a68a-b49cd73a0fe4": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "PM1-viaAPIM-SAP-ODATA-Demo",
+      "iconUri": "https://az787822.vo.msecnd.net/defaulticons/api-dedicated.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_new-5fpm1-2dviaapim-2dsap-2dodata-2ddemo-5f3a8078cca79c9346",
+      "isCustomApiConnection": true,
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "SAPODATA[Sample]Connector"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "0ee7ec86-5a55-41dc-a68a-b49cd73a0fe4"
+  },
+  "83915cb9-a5f5-42f4-a40a-22de17c43f92": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Power BI",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1596/1.0.1596.2995/powerbi/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_powerbi",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "PowerBI"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "83915cb9-a5f5-42f4-a40a-22de17c43f92"
+  }
+}

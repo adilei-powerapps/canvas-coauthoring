@@ -1,0 +1,122 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cra1b_buildings",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cra1b_building",
+    "MaxGetRowsCount": 500,
+    "Name": "Buildings",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cra1b_building_AsyncOperations": "System Jobs",
+      "cra1b_building_BulkDeleteFailures": "Bulk Delete Failures",
+      "cra1b_building_DuplicateBaseRecord": "Duplicate Records (cra1b_building_DuplicateBaseRecord)",
+      "cra1b_building_DuplicateMatchingRecord": "Duplicate Records (cra1b_building_DuplicateMatchingRecord)",
+      "cra1b_building_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "cra1b_building_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "cra1b_building_ProcessSession": "Process Sessions",
+      "cra1b_building_SyncErrors": "Sync Errors",
+      "cra1b_Building_SystemUser_SystemUser": "Users",
+      "cra1b_buildingid": "Building",
+      "cra1b_buildingnumber": "Building Number",
+      "cra1b_buildingtype": "Building Type",
+      "cra1b_name": "Name",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Buildings",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Buildings (Views)",
+    "Name": "_cra1b_building_views",
+    "RelatedEntityName": "Buildings",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "5cbf72da-d66d-4af5-af49-63e3882ea173": "Building Associated View",
+      "6ad6694d-b94d-4bfb-8b4b-5f7e8e75304c": "Building Lookup View",
+      "a4193645-e6ab-4dd5-888b-5fe5654bea33": "Active Buildings",
+      "afd2e068-5c1b-4a23-a966-b7c2edd49157": "Building Advanced Find View",
+      "c567d0fd-c40a-4af5-a591-78f3252fca32": "Inactive Buildings"
+    }
+  },
+  {
+    "DisplayName": "Status (Buildings)",
+    "Name": "cra1b_building_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Buildings"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Buildings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Buildings)",
+    "Name": "cra1b_building_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Buildings"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Buildings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Building Types",
+    "Name": "cra1b_buildingtypes",
+    "OptionSetInfoNameMapping": {
+      "1": "Public",
+      "2": "Residintial",
+      "3": "Training",
+      "4": "Workshops"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "cra1b_buildingtype",
+        "OptionSetReferenceEntityName": "Buildings"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "cra1b_buildingtype",
+    "RelatedEntityName": "Buildings",
+    "Type": "OptionSetInfo"
+  }
+]

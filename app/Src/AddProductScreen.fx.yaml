@@ -1,0 +1,285 @@
+AddProductScreen As screen:
+    Fill: =RGBA(255,255,255,1)
+    Height: =Max(App.Height, App.DesignHeight)
+    Orientation: =If(AddProductScreen.Width < AddProductScreen.Height, Layout.Vertical, Layout.Horizontal)
+    Size: =1 + CountRows(App.SizeBreakpoints) - CountIf(App.SizeBreakpoints, Value >= AddProductScreen.Width)
+    Width: =Max(App.Width, App.DesignWidth)
+
+    ProductBox_1 As ProductBox:
+        Partner: =zPartner
+        Product: =zCurrentProduct
+        X: =686
+        Y: =128
+
+    Label2_3 As label:
+        Align: =Center
+        Fill: =RGBA(204, 231, 246, 1)
+        FocusedBorderColor: =Label2_3.BorderColor
+        FontWeight: =Bold
+        Height: =55
+        HoverBorderColor: =Label2_3.BorderColor
+        HoverColor: =Label2_3.Color
+        HoverFill: =Label2_3.Fill
+        PressedBorderColor: =Label2_3.BorderColor
+        PressedColor: =Label2_3.Color
+        PressedFill: =Label2_3.Fill
+        Size: =24
+        Text: ="SAP ODATA Demo"
+        Width: =1366
+        ZIndex: =2
+
+    CreateButton As button:
+        BorderColor: =ColorFade(CreateButton.Fill, -15%)
+        FocusedBorderColor: =CreateButton.BorderColor
+        HoverBorderColor: =ColorFade(CreateButton.BorderColor, 20%)
+        OnSelect: |-
+            =Set(zTodo1, true)
+            // Use a flow to add the product
+            // The flow can handle Anti-CSRF tokens and can take inputs from the app
+            // For example: 
+            /* SAPAddProduct.Run(ProductIDinputTB.Text, CategoryDD.Selected.Category, ProductNameInputTB.Text, PriceInputTB.Text, DescriptionInputTB.Text, SupplierDD.Selected.BusinessPartnerID, "1.0") */
+        PressedBorderColor: =CreateButton.Fill
+        PressedColor: =CreateButton.Fill
+        PressedFill: =CreateButton.Color
+        Text: ="Add Product"
+        X: =382
+        Y: =664
+        ZIndex: =3
+
+    ProductIDinputTB As text:
+        Default: =""
+        FocusedBorderColor: =ProductIDinputTB.BorderColor
+        PressedBorderColor: =ProductIDinputTB.HoverBorderColor
+        PressedColor: =ProductIDinputTB.Color
+        PressedFill: =ProductIDinputTB.Fill
+        Width: =328
+        X: =214
+        Y: =156
+        ZIndex: =4
+
+    Label8_3 As label:
+        FocusedBorderColor: =Label8_3.BorderColor
+        HoverBorderColor: =Label8_3.BorderColor
+        HoverColor: =Label8_3.Color
+        HoverFill: =Label8_3.Fill
+        PressedBorderColor: =Label8_3.BorderColor
+        PressedColor: =Label8_3.Color
+        PressedFill: =Label8_3.Fill
+        Text: ="Product ID"
+        X: =64
+        Y: =156
+        ZIndex: =5
+
+    ProductNameInputTB As text:
+        Default: =""
+        FocusedBorderColor: =ProductNameInputTB.BorderColor
+        PressedBorderColor: =ProductNameInputTB.HoverBorderColor
+        PressedColor: =ProductNameInputTB.Color
+        PressedFill: =ProductNameInputTB.Fill
+        Width: =328
+        X: =214
+        Y: =211
+        ZIndex: =6
+
+    Label8_4 As label:
+        FocusedBorderColor: =Label8_4.BorderColor
+        HoverBorderColor: =Label8_4.BorderColor
+        HoverColor: =Label8_4.Color
+        HoverFill: =Label8_4.Fill
+        PressedBorderColor: =Label8_4.BorderColor
+        PressedColor: =Label8_4.Color
+        PressedFill: =Label8_4.Fill
+        Text: ="Product Name"
+        X: =64
+        Y: =211
+        ZIndex: =7
+
+    Label8_5 As label:
+        FocusedBorderColor: =Label8_5.BorderColor
+        HoverBorderColor: =Label8_5.BorderColor
+        HoverColor: =Label8_5.Color
+        HoverFill: =Label8_5.Fill
+        PressedBorderColor: =Label8_5.BorderColor
+        PressedColor: =Label8_5.Color
+        PressedFill: =Label8_5.Fill
+        Text: ="Category"
+        X: =64
+        Y: =326
+        ZIndex: =8
+
+    PriceInputTB As text:
+        Default: =""
+        FocusedBorderColor: =PriceInputTB.BorderColor
+        PressedBorderColor: =PriceInputTB.HoverBorderColor
+        PressedColor: =PriceInputTB.Color
+        PressedFill: =PriceInputTB.Fill
+        Width: =328
+        X: =214
+        Y: =268
+        ZIndex: =9
+
+    Label8_6 As label:
+        FocusedBorderColor: =Label8_6.BorderColor
+        HoverBorderColor: =Label8_6.BorderColor
+        HoverColor: =Label8_6.Color
+        HoverFill: =Label8_6.Fill
+        PressedBorderColor: =Label8_6.BorderColor
+        PressedColor: =Label8_6.Color
+        PressedFill: =Label8_6.Fill
+        Text: ="Price (USD)"
+        X: =64
+        Y: =268
+        ZIndex: =10
+
+    CategoryDD As dropdown:
+        FocusedBorderColor: =CategoryDD.BorderColor
+        HoverBorderColor: =ColorFade(CategoryDD.BorderColor, 15%)
+        Items: ='SAPODATA[Sample]Connector'.ListProductCategory().d.results
+        PressedBorderColor: =CategoryDD.HoverBorderColor
+        X: =214
+        Y: =326
+        ZIndex: =11
+
+    Label8_7 As label:
+        FocusedBorderColor: =Label8_7.BorderColor
+        HoverBorderColor: =Label8_7.BorderColor
+        HoverColor: =Label8_7.Color
+        HoverFill: =Label8_7.Fill
+        PressedBorderColor: =Label8_7.BorderColor
+        PressedColor: =Label8_7.Color
+        PressedFill: =Label8_7.Fill
+        Text: ="Supplier"
+        X: =64
+        Y: =385
+        ZIndex: =12
+
+    SupplierDD As dropdown:
+        FocusedBorderColor: =SupplierDD.BorderColor
+        HoverBorderColor: =ColorFade(SupplierDD.BorderColor, 15%)
+        Items: |-
+            ='SAPODATA[Sample]Connector'.ListBusinessPartner({'$filter': "CompanyName ne 'Consumer'"}).d.results
+        PressedBorderColor: =SupplierDD.HoverBorderColor
+        X: =214
+        Y: =385
+        ZIndex: =13
+
+    DescriptionInputTB As text:
+        Default: =""
+        FocusedBorderColor: =DescriptionInputTB.BorderColor
+        Height: =135
+        Mode: =TextMode.MultiLine
+        PressedBorderColor: =DescriptionInputTB.HoverBorderColor
+        PressedColor: =DescriptionInputTB.Color
+        PressedFill: =DescriptionInputTB.Fill
+        Width: =478
+        X: =64
+        Y: =484
+        ZIndex: =14
+
+    Label8_8 As label:
+        FocusedBorderColor: =Label8_8.BorderColor
+        HoverBorderColor: =Label8_8.BorderColor
+        HoverColor: =Label8_8.Color
+        HoverFill: =Label8_8.Fill
+        PressedBorderColor: =Label8_8.BorderColor
+        PressedColor: =Label8_8.Color
+        PressedFill: =Label8_8.Fill
+        Text: ="Description"
+        X: =64
+        Y: =444
+        ZIndex: =15
+
+    FetchButton As button:
+        BorderColor: =ColorFade(FetchButton.Fill, -15%)
+        FocusedBorderColor: =FetchButton.BorderColor
+        HoverBorderColor: =ColorFade(FetchButton.BorderColor, 20%)
+        OnSelect: =Set(zPartner, SupplierDD.Selected); Set(zCurrentProduct, 'SAPODATA[Sample]Connector'.GetProduct(ProductIDinputTB.Text).d); 
+        PressedBorderColor: =FetchButton.Fill
+        PressedColor: =FetchButton.Fill
+        PressedFill: =FetchButton.Color
+        Text: ="Fetch Product"
+        X: =590
+        Y: =327
+        ZIndex: =16
+
+    Icon4_4 As icon.Add:
+        DisabledFill: =Icon4_4.Fill
+        FocusedBorderColor: =Icon4_4.BorderColor
+        Height: =55
+        HoverBorderColor: =ColorFade(Icon4_4.BorderColor, 20%)
+        HoverColor: =ColorFade(Icon4_4.Color, 20%)
+        HoverFill: =Icon4_4.Fill
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate(ProductDetailsScreen)
+        PressedBorderColor: =ColorFade(Icon4_4.BorderColor, -20%)
+        PressedColor: =ColorFade(Icon4_4.Color, -20%)
+        PressedFill: =Icon4_4.Fill
+        Width: =50
+        X: =14
+        ZIndex: =17
+
+    Icon4_5 As icon.Add:
+        DisabledFill: =Icon4_5.Fill
+        FocusedBorderColor: =Icon4_5.BorderColor
+        Height: =55
+        HoverBorderColor: =ColorFade(Icon4_5.BorderColor, 20%)
+        HoverColor: =ColorFade(Icon4_5.Color, 20%)
+        HoverFill: =Icon4_5.Fill
+        Icon: =Icon.NextArrow
+        OnSelect: =Navigate(AboutApp1)
+        PressedBorderColor: =ColorFade(Icon4_5.BorderColor, -20%)
+        PressedColor: =ColorFade(Icon4_5.Color, -20%)
+        PressedFill: =Icon4_5.Fill
+        Width: =50
+        X: =1304
+        ZIndex: =18
+
+    Rectangle1_1 As rectangle:
+        DisabledFill: =Rectangle1_1.Fill
+        FocusedBorderColor: =Rectangle1_1.BorderColor
+        Height: =12
+        HoverFill: =Rectangle1_1.Fill
+        PressedFill: =Rectangle1_1.Fill
+        Width: =1366
+        Y: =120
+        ZIndex: =20
+
+    Label6_1 As label:
+        FocusedBorderColor: =Label6_1.BorderColor
+        FontWeight: =Semibold
+        Height: =51
+        HoverBorderColor: =Label6_1.BorderColor
+        HoverColor: =Label6_1.Color
+        HoverFill: =Label6_1.Fill
+        PressedBorderColor: =Label6_1.BorderColor
+        PressedColor: =Label6_1.Color
+        PressedFill: =Label6_1.Fill
+        Size: =24
+        Text: ="Add a new product"
+        Width: =508
+        X: =64
+        Y: =69
+        ZIndex: =21
+
+    Label3 As label:
+        BorderColor: =RGBA(184, 0, 0, 1)
+        BorderStyle: =Solid
+        BorderThickness: =1
+        Fill: =RGBA(253, 222, 207, 1)
+        FocusedBorderColor: =Label3.BorderColor
+        Height: =88
+        HoverBorderColor: =Label3.BorderColor
+        HoverColor: =Label3.Color
+        HoverFill: =Label3.Fill
+        OnSelect: =Set(zTodo1, false)
+        PressedBorderColor: =Label3.BorderColor
+        PressedColor: =Label3.Color
+        PressedFill: =Label3.Fill
+        Text: |-
+            ="TODO: Fix the ""OnSelect"" formula to invoke the flow that will create the product."
+        Visible: =zTodo1
+        Width: =334
+        X: =26
+        Y: =652
+        ZIndex: =22
+

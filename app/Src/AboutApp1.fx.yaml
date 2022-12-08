@@ -1,0 +1,79 @@
+AboutApp1 As screen:
+    Height: =Max(App.Height, App.DesignHeight)
+    Orientation: =If(AboutApp1.Width < AboutApp1.Height, Layout.Vertical, Layout.Horizontal)
+    Size: =1 + CountRows(App.SizeBreakpoints) - CountIf(App.SizeBreakpoints, Value >= AboutApp1.Width)
+    Width: =Max(App.Width, App.DesignWidth)
+
+    Label2_1 As label:
+        Align: =Center
+        Fill: =RGBA(204, 231, 246, 1)
+        FocusedBorderColor: =Label2_1.BorderColor
+        FontWeight: =Bold
+        Height: =55
+        HoverBorderColor: =Label2_1.BorderColor
+        HoverColor: =Label2_1.Color
+        HoverFill: =Label2_1.Fill
+        PressedBorderColor: =Label2_1.BorderColor
+        PressedColor: =Label2_1.Color
+        PressedFill: =Label2_1.Fill
+        Size: =24
+        Text: ="SAP ODATA Demo"
+        Width: =1366
+        ZIndex: =1
+
+    HtmlText2 As htmlViewer:
+        Height: =713
+        HoverBorderColor: =HtmlText2.BorderColor
+        HtmlText: |-
+            ="<h2>About this demo app - The Basics</h2>
+            This demo shows how we can an app connecting to an SAP ODATA API. Connecting to an SAP ODATA API from the Power platform is straight-forward.
+            <ul>
+            <li>Build a custom connector against the SAP ODATA API</li>
+            <li>Use the custom connector from your app or your flow</li>
+            </ul>
+            <h3>Pre-requisites</h3>
+            First, you will need to get an SAP System with ODATA API. If you have one, that is great. If not, you can use the SAP Developer System which you can sign up from SAP.
+            <h3>Building the custom connector and the app</h3>
+            Building the custom connector is also straight-forward.  You can start with <a href=""https://docs.microsoft.com/en-us/connectors/custom-connectors/define-blank"">our documentation</a> and get that going in few minutes. Alternately, you can pick up the custom connector from our open source GitHub repo. Just remember that the open sourced custom connector in GitHub is going against the SAP Gateway Demo system. If you use your own SAP server, you may need to modify the connector. The connector here connects to the SAP EDM Sample Basic ODATA service.  This ODATA services provides basic (CRUDQ) operations againsts a set of entities - Products, Partners, SalesOrders, and Contacts.
+            <p/>
+            This app allows you to browse Products and update them using the connector. You can extend this to add more functionality.
+            "
+        PressedBorderColor: =HtmlText2.BorderColor
+        Size: =16
+        Width: =1284
+        X: =39
+        Y: =55
+        ZIndex: =2
+
+    Icon4_1 As icon.Add:
+        DisabledFill: =Icon4_1.Fill
+        FocusedBorderColor: =Icon4_1.BorderColor
+        Height: =55
+        HoverBorderColor: =ColorFade(Icon4_1.BorderColor, 20%)
+        HoverColor: =ColorFade(Icon4_1.Color, 20%)
+        HoverFill: =Icon4_1.Fill
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate(AddProductScreen)
+        PressedBorderColor: =ColorFade(Icon4_1.BorderColor, -20%)
+        PressedColor: =ColorFade(Icon4_1.Color, -20%)
+        PressedFill: =Icon4_1.Fill
+        Width: =50
+        X: =12
+        ZIndex: =3
+
+    Icon4_3 As icon.Add:
+        DisabledFill: =Icon4_3.Fill
+        FocusedBorderColor: =Icon4_3.BorderColor
+        Height: =55
+        HoverBorderColor: =ColorFade(Icon4_3.BorderColor, 20%)
+        HoverColor: =ColorFade(Icon4_3.Color, 20%)
+        HoverFill: =Icon4_3.Fill
+        Icon: =Icon.NextArrow
+        OnSelect: =Navigate(AboutApp2)
+        PressedBorderColor: =ColorFade(Icon4_3.BorderColor, -20%)
+        PressedColor: =ColorFade(Icon4_3.Color, -20%)
+        PressedFill: =Icon4_3.Fill
+        Width: =50
+        X: =1302
+        ZIndex: =4
+

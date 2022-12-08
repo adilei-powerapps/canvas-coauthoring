@@ -1,0 +1,98 @@
+Screen1 As screen:
+
+    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =Min(160, Self.Height - 60)
+        X: =543
+        Y: =193
+        ZIndex: =1
+
+        Image4 As image:
+            Height: =128
+            HoverBorderColor: =ColorFade(Image4.BorderColor, 20%)
+            HoverFill: =ColorFade(Image4.Fill, 20%)
+            OnSelect: =Select(Parent)
+            PressedBorderColor: =ColorFade(Image4.BorderColor, -20%)
+            PressedFill: =ColorFade(Image4.Fill, -20%)
+            Width: =128
+            X: =16
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =1
+
+        Title2 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.SampleHeading
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - Image4.Width - 104
+            X: =Image4.X + Image4.Width + 24
+            Y: =44
+            ZIndex: =2
+
+        Subtitle2 As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.SampleText
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Title2.Width
+            X: =Title2.X
+            Y: =Title2.Y + Title2.Height + 4
+            ZIndex: =3
+
+        NextArrow2 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            DisabledFill: =NextArrow2.Fill
+            Height: =60
+            HoverBorderColor: =ColorFade(NextArrow2.BorderColor, 20%)
+            HoverColor: =ColorFade(NextArrow2.Color, 20%)
+            HoverFill: =NextArrow2.Fill
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            PressedBorderColor: =ColorFade(NextArrow2.BorderColor, -20%)
+            PressedColor: =ColorFade(NextArrow2.Color, -20%)
+            PressedFill: =NextArrow2.Fill
+            TabIndex: =0
+            Tooltip: ="View item details"
+            Width: =60
+            X: =Parent.TemplateWidth - Self.Width - 5
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator2 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - 1
+            ZIndex: =5
+
+    Icon3 As icon.Reload:
+        DisabledFill: =Icon3.Fill
+        HoverBorderColor: =ColorFade(Icon3.BorderColor, 20%)
+        HoverColor: =ColorFade(Icon3.Color, 20%)
+        HoverFill: =Icon3.Fill
+        Icon: =Icon.Reload
+        OnSelect: |+
+            =ClearCollect(powerBICol,PowerBI.ExecuteDatasetQuery("83d18af0-2e2e-454e-88fd-1cb21a6f95f5","481036a6-3cd9-4e8a-a780-df1058784951","EVALUATE TOPN( 500, VALUES(Manufacturer[Manufacturer]) )",{includeNulls: false}));
+            
+            Set(jsonCol, JSON(powerBICol))
+            
+        PressedBorderColor: =ColorFade(Icon3.BorderColor, -20%)
+        PressedColor: =ColorFade(Icon3.Color, -20%)
+        PressedFill: =Icon3.Fill
+        X: =40
+        Y: =40
+        ZIndex: =2
+

@@ -1,0 +1,329 @@
+ProductDetailsScreen As screen:
+    Height: =Max(App.Height, App.DesignHeight)
+    OnVisible: =//If(IsEmpty(zProducts), Select(RefreshButton))
+    Orientation: =If(ProductDetailsScreen.Width < ProductDetailsScreen.Height, Layout.Vertical, Layout.Horizontal)
+    Size: =1 + CountRows(App.SizeBreakpoints) - CountIf(App.SizeBreakpoints, Value >= ProductDetailsScreen.Width)
+    Width: =Max(App.Width, App.DesignWidth)
+
+    Rectangle2 As rectangle:
+        BorderColor: =RGBA(237, 237, 237, 1)
+        DisabledFill: =Rectangle2.Fill
+        Fill: =RGBA(237, 237, 237, 1)
+        Height: =636
+        HoverFill: =Rectangle2.Fill
+        PressedFill: =Rectangle2.Fill
+        Width: =1366
+        Y: =132
+        ZIndex: =1
+
+    Background_1 As button:
+        BorderColor: =ColorFade(Background_1.Fill, -15%)
+        BorderThickness: =0
+        DisabledFill: =RGBA(255, 255, 255, 1)
+        DisplayMode: =DisplayMode.Disabled
+        Height: =584
+        HoverBorderColor: =ColorFade(Background_1.BorderColor, 20%)
+        PressedBorderColor: =Background_1.Fill
+        PressedColor: =Background_1.Fill
+        PressedFill: =Background_1.Color
+        RadiusBottomLeft: =15
+        RadiusBottomRight: =15
+        RadiusTopLeft: =15
+        RadiusTopRight: =15
+        Text: =""
+        Width: =598
+        X: =698
+        Y: =155
+        ZIndex: =2
+
+    Label2_4 As label:
+        Align: =Center
+        Fill: =RGBA(204, 231, 246, 1)
+        FocusedBorderColor: =Label2_4.BorderColor
+        FontWeight: =Bold
+        Height: =55
+        HoverBorderColor: =Label2_4.BorderColor
+        HoverColor: =Label2_4.Color
+        HoverFill: =Label2_4.Fill
+        PressedBorderColor: =Label2_4.BorderColor
+        PressedColor: =Label2_4.Color
+        PressedFill: =Label2_4.Fill
+        Size: =24
+        Text: ="Sales Order Risk Management"
+        Width: =1366
+        ZIndex: =3
+
+    ProductBox_2 As ProductBox:
+        Height: =613
+        Partner: =zPartner
+        Product: =zCurrentProduct
+        SalesOrder: =Gallery3.Selected
+        Width: =660
+        X: =654
+        Y: =140
+        ZIndex: =4
+
+    RefreshButton As icon.Reload:
+        Color: =RGBA(0, 134, 208, 1)
+        DisabledFill: =RefreshButton.Fill
+        FocusedBorderColor: =RefreshButton.BorderColor
+        Height: =40
+        HoverBorderColor: =ColorFade(RefreshButton.BorderColor, 20%)
+        HoverColor: =ColorFade(RefreshButton.Color, 20%)
+        HoverFill: =RefreshButton.Fill
+        Icon: =Icon.Reload
+        OnSelect: =Set(zViewMode, true); ClearCollect(zProducts, 'SAPODATA[Sample]Connector'.ListSalesOrders().d.results);
+        PressedBorderColor: =ColorFade(RefreshButton.BorderColor, -20%)
+        PressedColor: =ColorFade(RefreshButton.Color, -20%)
+        PressedFill: =RefreshButton.Fill
+        Width: =36
+        X: =19
+        Y: =69
+        ZIndex: =5
+
+    Label6 As label:
+        Color: =RGBA(0, 134, 208, 1)
+        FocusedBorderColor: =Label6.BorderColor
+        FontWeight: =Semibold
+        HoverBorderColor: =Label6.BorderColor
+        HoverColor: =Label6.Color
+        HoverFill: =Label6.Fill
+        PressedBorderColor: =Label6.BorderColor
+        PressedColor: =Label6.Color
+        PressedFill: =Label6.Fill
+        Size: =24
+        Text: ="Refresh"
+        Width: =362
+        X: =85
+        Y: =69
+        ZIndex: =6
+
+    Icon4 As icon.Add:
+        Color: =RGBA(0, 134, 208, 1)
+        DisabledFill: =Icon4.Fill
+        FocusedBorderColor: =Icon4.BorderColor
+        Height: =32
+        HoverBorderColor: =ColorFade(Icon4.BorderColor, 20%)
+        HoverColor: =ColorFade(Icon4.Color, 20%)
+        HoverFill: =Icon4.Fill
+        Icon: =Icon.NextArrow
+        OnSelect: =Navigate(AddProductScreen)
+        PressedBorderColor: =ColorFade(Icon4.BorderColor, -20%)
+        PressedColor: =ColorFade(Icon4.Color, -20%)
+        PressedFill: =Icon4.Fill
+        Width: =36
+        X: =1322
+        Y: =13
+        ZIndex: =7
+
+    Rectangle4 As rectangle:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =Rectangle4.Fill
+        Fill: =RGBA(219, 219, 219, 0.7)
+        Height: =117
+        HoverFill: =Rectangle4.Fill
+        PressedFill: =Rectangle4.Fill
+        Width: =127
+        Y: =297
+        ZIndex: =10
+
+    Group1 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =10
+
+        Background As button:
+            BorderColor: =ColorFade(Background.Fill, -15%)
+            BorderThickness: =0
+            DisabledFill: =RGBA(255, 255, 255, 1)
+            DisplayMode: =DisplayMode.Disabled
+            Height: =584
+            HoverBorderColor: =ColorFade(Background.BorderColor, 20%)
+            PressedBorderColor: =Background.Fill
+            PressedColor: =Background.Fill
+            PressedFill: =Background.Color
+            Text: =""
+            Width: =526
+            X: =127
+            Y: =155
+            ZIndex: =8
+
+        "Gallery3 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
+            DisabledBorderColor: =Gallery3.BorderColor
+            DisabledFill: =Gallery3.Fill
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =558
+            HoverBorderColor: =Gallery3.BorderColor
+            HoverFill: =Gallery3.Fill
+            Items: =zProducts
+            Layout: =Layout.Vertical
+            LoadingSpinnerColor: =Gallery3.BorderColor
+            OnSelect: =Set(zViewMode, true); Set(zCurrentProduct, Gallery3.Selected); Set(zPartner, 'SAPODATA[Sample]Connector'.GetBusinessPartner(Gallery3.Selected.SupplierID).d)
+            PressedBorderColor: =Gallery3.BorderColor
+            PressedFill: =Gallery3.Fill
+            TemplatePadding: =0
+            TemplateSize: =Min(168, Self.Height - 60)
+            Width: =496
+            X: =142
+            Y: =168
+            ZIndex: =9
+
+            Title1 As label:
+                Height: =Self.Size * 1.8
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =ThisItem.CustomerName
+                VerticalAlign: =VerticalAlign.Top
+                Width: =Parent.TemplateWidth - 104
+                X: =32
+                Y: =16
+                ZIndex: =1
+
+            Subtitle1 As label:
+                Height: =Self.Size * 1.8
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =ThisItem.GrossAmount
+                VerticalAlign: =VerticalAlign.Top
+                Width: =Parent.TemplateWidth - 104
+                X: =32
+                Y: =60
+                ZIndex: =2
+
+            Body1 As label:
+                Height: =Self.Size * 4
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =ThisItem.CustomerName
+                VerticalAlign: =VerticalAlign.Top
+                Width: =Parent.TemplateWidth - 104
+                X: =32
+                Y: =Subtitle1.Y + Subtitle1.Height + 4
+                ZIndex: =3
+
+            NextArrow1 As icon.ChevronRight:
+                AccessibleLabel: =Self.Tooltip
+                DisabledFill: =NextArrow1.Fill
+                Height: =60
+                HoverBorderColor: =ColorFade(NextArrow1.BorderColor, 20%)
+                HoverColor: =ColorFade(NextArrow1.Color, 20%)
+                HoverFill: =NextArrow1.Fill
+                Icon: =Icon.ChevronRight
+                OnSelect: =Select(Parent)
+                PaddingBottom: =10
+                PaddingLeft: =10
+                PaddingRight: =10
+                PaddingTop: =10
+                PressedBorderColor: =ColorFade(NextArrow1.BorderColor, -20%)
+                PressedColor: =ColorFade(NextArrow1.Color, -20%)
+                PressedFill: =NextArrow1.Fill
+                TabIndex: =0
+                Tooltip: ="View item details"
+                Width: =60
+                X: =Parent.TemplateWidth - Self.Width - 5
+                Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                ZIndex: =4
+
+            Separator1 As rectangle:
+                Height: =1
+                OnSelect: =Select(Parent)
+                Width: =Parent.TemplateWidth
+                Y: =Parent.TemplateHeight - 1
+                ZIndex: =5
+
+            Label2 As label:
+                Height: =32
+                OnSelect: =Select(Parent)
+                Size: =14
+                Text: =ThisItem.TaxAmount
+                X: =153
+                Y: =60
+                ZIndex: =6
+
+    Group2 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =13
+
+        Image2 As image:
+            Height: =85
+            HoverBorderColor: =ColorFade(Image2.BorderColor, 20%)
+            HoverFill: =ColorFade(Image2.Fill, 20%)
+            Image: =sap1
+            PressedBorderColor: =ColorFade(Image2.BorderColor, -20%)
+            PressedFill: =ColorFade(Image2.Fill, -20%)
+            Width: =85
+            X: =22
+            Y: =154
+            ZIndex: =11
+
+        Image2_1 As image:
+            Height: =85
+            HoverBorderColor: =ColorFade(Image2_1.BorderColor, 20%)
+            HoverFill: =ColorFade(Image2_1.Fill, 20%)
+            Image: =sap2
+            PressedBorderColor: =ColorFade(Image2_1.BorderColor, -20%)
+            PressedFill: =ColorFade(Image2_1.Fill, -20%)
+            Width: =85
+            X: =22
+            Y: =316
+            ZIndex: =12
+
+        Image2_2 As image:
+            Height: =85
+            HoverBorderColor: =ColorFade(Image2_2.BorderColor, 20%)
+            HoverFill: =ColorFade(Image2_2.Fill, 20%)
+            Image: =sap3
+            PressedBorderColor: =ColorFade(Image2_2.BorderColor, -20%)
+            PressedFill: =ColorFade(Image2_2.Fill, -20%)
+            Width: =85
+            X: =22
+            Y: =479
+            ZIndex: =13
+
+    Icon1 As icon.Save:
+        DisabledFill: =Icon1.Fill
+        Height: =47
+        HoverBorderColor: =ColorFade(Icon1.BorderColor, 20%)
+        HoverColor: =ColorFade(Icon1.Color, 20%)
+        HoverFill: =Icon1.Fill
+        Icon: =Icon.Save
+        OnSelect: =SaveData(zProducts,"localProducts")
+        PressedBorderColor: =ColorFade(Icon1.BorderColor, -20%)
+        PressedColor: =ColorFade(Icon1.Color, -20%)
+        PressedFill: =Icon1.Fill
+        Visible: =false
+        Width: =47
+        X: =1228
+        Y: =65
+        ZIndex: =14
+
+    Icon2 As icon.Reload:
+        DisabledFill: =Icon2.Fill
+        HoverBorderColor: =ColorFade(Icon2.BorderColor, 20%)
+        HoverColor: =ColorFade(Icon2.Color, 20%)
+        HoverFill: =Icon2.Fill
+        Icon: =Icon.Reload
+        OnSelect: |
+            =LoadData(zProducts,"localProducts");
+        PressedBorderColor: =ColorFade(Icon2.BorderColor, -20%)
+        PressedColor: =ColorFade(Icon2.Color, -20%)
+        PressedFill: =Icon2.Fill
+        Visible: =false
+        X: =463
+        Y: =65
+        ZIndex: =15
+
